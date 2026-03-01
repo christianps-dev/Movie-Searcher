@@ -1,6 +1,6 @@
 ## 🎬 Movie Catalog Searcher
 
-A comprehensive Spring Boot 3 application for real-time movie discovery and personalized collections. It integrates with the **OMDB API** for metadata and features a secure, **JWT-based** authentication system.
+A Spring Boot 3 application for real-time movie discovery and personalized collections. It integrates with the **OMDB API** for metadata and features a secure, **JWT-based** authentication system.
 
 ---
 
