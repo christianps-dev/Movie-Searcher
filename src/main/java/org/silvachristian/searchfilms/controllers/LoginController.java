@@ -1,7 +1,6 @@
 package org.silvachristian.searchfilms.controllers;
 
 import jakarta.validation.Valid;
-import org.hibernate.validator.constraints.URL;
 import org.silvachristian.searchfilms.entity.UserEntity;
 import org.silvachristian.searchfilms.services.LoginServices;
 import org.springframework.stereotype.Controller;
@@ -37,10 +36,7 @@ public class LoginController {
         if(bindingResult.hasErrors()) {
             return "userauth/signup";
         }
-        boolean teste = loginServices.registerUser(userEntity);
-        System.out.println("Return of registeruser : "+teste);
-
-        if(teste) {
+        else if(loginServices.registerUser(userEntity)) {
             return "userauth/login";
         }
         else {
