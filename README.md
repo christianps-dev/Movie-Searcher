@@ -45,7 +45,7 @@ Multi-stage build to ensure a small, production-ready image.
 
 ```dockerfile
 FROM maven:3.8.5-openjdk-17 AS build
-COPY . .
+COPY SeachFilmsSpring .
 RUN mvn clean package -DskipTests
 
 FROM clipse-temurin:17-jdk-jammy
