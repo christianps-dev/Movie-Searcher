@@ -10,7 +10,7 @@ import java.util.List;
 public interface FavoritesRepository extends JpaRepository<FavoriteEntity, Long> {
 
     @Query("SELECT m.filmTitle AS filmTitle, m.posterURL AS posterURL, m.filmGenre AS filmGenre " +
-            "FROM movies m JOIN favorites f ON f.movieId = m.id JOIN users u on u.id = f.userId " +
+            "FROM movies m JOIN favorites f ON f.movieId = m.id JOIN user u on u.id = f.userId " +
             "WHERE m.filmGenre LIKE %:genre% ")
     List<FavoritesInfo> findByGenre(String genre);
 

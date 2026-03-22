@@ -3,7 +3,6 @@ package org.silvachristian.searchfilms.services;
 import org.silvachristian.searchfilms.entity.FavoriteEntity;
 import org.silvachristian.searchfilms.entity.FavoritesInfo;
 import org.silvachristian.searchfilms.repository.FavoritesRepository;
-import org.springframework.beans.factory.annotation.Value;
 import org.silvachristian.searchfilms.entity.MovieEntity;
 import org.silvachristian.searchfilms.repository.MovieRepository;
 import org.springframework.stereotype.Service;
@@ -16,14 +15,13 @@ public class MovieServices {
 
     private final RestClient restClient;
     private final MovieRepository movieRepository;
-    private final String apiKey;
+    private final String apiKey = "a19e4218";
     private final FavoritesRepository favoritesRepository;
 
     MovieServices(RestClient.Builder builder, MovieRepository movieRepository,
-                  @Value("${omdb-api-key}") String apiKeyProperties, FavoritesRepository favoritesRepository) {
+            FavoritesRepository favoritesRepository) {
         this.restClient = builder.baseUrl("http://www.omdbapi.com/").build();
         this.movieRepository = movieRepository;
-        this.apiKey = apiKeyProperties;
         this.favoritesRepository = favoritesRepository;
     }
 

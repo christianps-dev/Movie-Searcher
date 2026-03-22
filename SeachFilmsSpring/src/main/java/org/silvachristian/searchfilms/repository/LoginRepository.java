@@ -6,14 +6,17 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface LoginRepository extends JpaRepository<UserEntity, Long> {
 
-    @Query("SELECT CASE WHEN COUNT(username) > 0 THEN true ELSE false END FROM users WHERE username = :username")
-    boolean existsByUsername(String username);
-
-    @Query("SELECT u.id FROM users u WHERE u.username = :username")
+    @Query("SELECT u.id FROM user u WHERE u.username = :username")
     Long findUserByUsername(String username);
 
-    UserEntity findByUsername(@org.jspecify.annotations.NonNull String username);
+    Optional<UserEntity> findByUsername(@org.jspecify.annotations.NonNull String username);
+
+    boolean existsUserEntitiesByEmail(String email);
+
+    boolean existsUserEntitiesByUsername(String username);
 }

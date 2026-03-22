@@ -2,26 +2,27 @@ package org.silvachristian.searchfilms.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
-import org.hibernate.validator.constraints.Length;
+import lombok.*;
 
 @Getter
 @Setter
-@Entity(name = "users")
+@Entity(name = "user")
+@Table(name = "users")
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
     @NonNull
+    @NotBlank(message = "Username invalid, try again")
+    @Column(unique = true)
     private String username;
 
     @NonNull
+    @NotBlank
     private String password;
 
     @NonNull
