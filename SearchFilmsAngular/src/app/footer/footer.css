@@ -1,0 +1,11 @@
+.footerSite{
+  font-weight: bolder;
+  text-align: center;
+  font-size: 16px;
+  padding-top: 0.5%;
+}
+
+.colorFontOpacity{
+  color: #000000;
+  opacity: 0.5;
+}
