@@ -1,0 +1,64 @@
+<main class="form-floating">
+    <div class="container border border-2 rounded rounded-3 mainBox shadow-lg">
+        <div class="row">
+
+            <form [formGroup]="MovieForm" (submit)="searchMovie()" method="post" class="row align-items-center justify-content-center">
+              <div class="col text-center">
+                  <img class="imageFourtypx" src="/icons/title_movie_search.png" alt="">
+                  <label>
+                      <input formControlName="title" id="title" name="title" type="text" placeholder="Enter a movie title" class="searchBarCarac btn btn-outline-light shadow-lg"/>
+                  </label>
+                  <button class="btn btn-outline-light searchBarCarac shadow-lg" type="submit">Search</button>
+                  <button class="btn btn-outline-ligh searchBarCarac shadow-lg" type="button" (click)="favoritesPage()">Favorites</button>
+              </div>
+            </form>
+
+            <div class="row">
+                <div class="col">
+                    <p class="boxTitleMovie colorFontOpacity text-center">Movie Info</p>
+                    <ul class="border border-2 rounded text-start shadow-lg h5 movieInfo">
+                        <li>
+                            <img class="imageMovieInfo" src="/icons/icon_title.png" alt=""/>
+                            Title: {{movie?.Title}}
+                        </li>
+                        <li>
+                            <img class="imageMovieInfo" th:src="/icons/icon_date.png" alt=""/>
+                            Year: {{movie?.Year}}
+                        </li>
+                        <li>
+                            <img class="imageMovieInfo" th:src="/icons/theater_302260.png" alt=""/>
+                            Genres: {{movie?.Genre}}
+                        </li>
+                        <li>
+                            <img class="imageMovieInfo" th:src="/icons/icon_tv.png" alt=""/>
+                            Type: {{movie?.Type}}
+                        </li>
+                        <li>
+                            <img class="imageMovieInfo" th:src="/icons/icon_map.png" alt=""/>
+                            Country: {{movie?.Country}}
+                        </li>
+                        <li>
+                            <img class="imageMovieInfo" th:src="/icons/icon_star.png" alt=""/>
+                            Rating: {{movie?.Rating}}
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col">
+                    <p class="boxTitleMovie colorFontOpacity">Movie / Series</p>
+
+                    <div class="movieInfo row">
+
+                        <div class="col movieImageDiv shadow-lg">
+                            <img class="movieImagePoster" src="{{movie?.Poster}}" alt="">
+                        </div>
+                        <div class="col moviePlot shadow-lg">
+                            <p class="h4 colorFontOpacity boxTitleMovie underline">Plot</p>
+                            <span class="h6 colorFontOpacity">{{movie?.Plot}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

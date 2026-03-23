@@ -1,0 +1,29 @@
+<main class="form-signin row pt-0">
+  <div class="col-10 mx-5 rounded rounded-3 shadow-lg col" style="background-color: #E5EAF5;">
+      <div class="mt-5 ms-4 pb-4 h5">
+          <img class="imageFourtypx" src="">
+          <span class="fontDetails">Movie Catalog</span>
+      </div>
+
+      <form [formGroup]="LoginForm" (submit)="siginUser()" method="post" class="formLogin">
+          <div class="container ms-3 me-3">
+              <div class="mt-2 pb-4 ms-2 h4 fontDetails">
+                  Nice to see you again!
+              </div>
+
+              <label class="form-label loginInputs ms-4 fw-bolder" for="username">Username</label>
+              <input id="username" formControlName="username" type="text" class="form-control loginInputs" placeholder="Enter Username" />
+
+              <label for="password" class="form-label loginInputs ms-4 mt-4 fw-bolder">Password</label>
+              <input id="password" formControlName="password" type="password" class="form-control loginInputs" placeholder="Enter Password" />
+
+              <div class=" container mt-5 formSignInOut">
+                  <button type="submit" class="btn btn-outline-light searchBarCarac shadow-lg ms-0">Sign in</button>
+                  <div class="mt-4 straightLine colorFontOpacity">Or</div>
+                  <a (click)="sendSignupPage()" class="btn btn-outline-light searchBarCarac shadow-lg ms-0 mt-4">Sign up</a>
+              </div>
+
+          </div>
+      </form>
+  </div>
+</main>

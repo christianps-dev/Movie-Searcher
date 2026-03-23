@@ -1,0 +1,43 @@
+.loginInputs{
+    margin: 2% 2% 2% 2%;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    text-align: start;
+}
+.formLogin{
+    background-color: #E5EAF5;
+    display: flex;
+    text-align: center;
+    align-self: center;
+    justify-content: center;
+}
+
+.formSignInOut{
+    background-color: #E5EAF5;
+    display: grid;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    flex-flow: column;
+}
+
+.fontDetails{
+    color: #000000;
+    opacity: 0.7;
+}
+
+.straightLine{
+    display: grid;
+    grid-template-columns: 2fr auto 2fr;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.straightLine:after, .straightLine:before{
+    content: "";
+    border-top: 1px solid black;
+}
+
+
