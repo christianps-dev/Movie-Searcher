@@ -15,7 +15,7 @@ public class MovieServices {
 
     private final RestClient restClient;
     private final MovieRepository movieRepository;
-    private final String apiKey = "a19e4218";
+    private final String apiKey = "";
     private final FavoritesRepository favoritesRepository;
 
     MovieServices(RestClient.Builder builder, MovieRepository movieRepository,
