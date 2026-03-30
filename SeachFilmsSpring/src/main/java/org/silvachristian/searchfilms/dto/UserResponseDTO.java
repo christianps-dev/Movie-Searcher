@@ -1,4 +1,4 @@
 package org.silvachristian.searchfilms.dto;
 
-public record UserResponseDTO(String username, String token) {
+public record UserResponseDTO(String username, String token, String email) {
 }

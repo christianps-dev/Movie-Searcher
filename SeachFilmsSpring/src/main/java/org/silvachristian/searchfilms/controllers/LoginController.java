@@ -34,7 +34,7 @@ public class LoginController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity signupUser(@Valid @RequestBody RegisterUserDTO user) {
+    public ResponseEntity <UserResponseDTO> signupUser(@Valid @RequestBody RegisterUserDTO user) {
         if (user != null && !loginServices.userExists(user)) {
             // Criando novo usuario.
             UserEntity newUser = new UserEntity();
@@ -42,19 +42,22 @@ public class LoginController {
             newUser.setPassword(Objects.requireNonNull(passwordEncoder.encode(user.password())));
             newUser.setEmail(user.email());
             loginRepository.save(newUser);
+            System.out.println("Registering user: " + user.username());
 
             // Criando token e retornando a response.
             String token = tokenService.generateToken(newUser);
-            return ResponseEntity.ok(new UserResponseDTO(newUser.getUsername(), token));
+            return ResponseEntity.ok(new UserResponseDTO(newUser.getUsername(), token, newUser.getEmail()));
         } else{
-            return ResponseEntity.badRequest().build();
+            assert Objects.requireNonNull(user).username() != null;
+            System.out.println("Username already exists : " +  user.username());
+            return ResponseEntity.ok(loginServices.userExistByUsernameAndEmail(user));
 
         }
 
     }
 
     @PostMapping("/login")
-    public ResponseEntity loginUser(@Valid @RequestBody LoginUserDTO user) throws UsernameNotFoundException {
+    public ResponseEntity<UserResponseDTO> loginUser(@Valid @RequestBody LoginUserDTO user) throws UsernameNotFoundException {
         // Buscando usuario
         UserEntity loginUser = loginRepository.findByUsername(user.username()).orElse(null);
         assert loginUser != null;
@@ -63,7 +66,7 @@ public class LoginController {
         if (passwordEncoder.matches(user.password(), loginUser.getPassword())) {
 
             String token = tokenService.generateToken(loginUser);
-            return ResponseEntity.ok(new UserResponseDTO(loginUser.getUsername(), token));
+            return ResponseEntity.ok(new UserResponseDTO(loginUser.getUsername(), token,  loginUser.getEmail()));
         } else{
             return ResponseEntity.badRequest().build();
 

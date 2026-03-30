@@ -5,6 +5,7 @@ import org.silvachristian.searchfilms.entity.FavoritesInfo;
 import org.silvachristian.searchfilms.repository.FavoritesRepository;
 import org.silvachristian.searchfilms.entity.MovieEntity;
 import org.silvachristian.searchfilms.repository.MovieRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
@@ -15,14 +16,16 @@ public class MovieServices {
 
     private final RestClient restClient;
     private final MovieRepository movieRepository;
-    private final String apiKey = "";
+    private final String apiKey;
     private final FavoritesRepository favoritesRepository;
 
     MovieServices(RestClient.Builder builder, MovieRepository movieRepository,
-            FavoritesRepository favoritesRepository) {
-        this.restClient = builder.baseUrl("http://www.omdbapi.com/").build();
+                  FavoritesRepository favoritesRepository, @Value("${omdb-api-key}") String apiKey,
+                   @Value("${omdb-api-url}") String omdbAPIUrl) {
+        this.restClient = builder.baseUrl(omdbAPIUrl).build();
         this.movieRepository = movieRepository;
         this.favoritesRepository = favoritesRepository;
+        this.apiKey = apiKey;
     }
 
     public boolean checkIfAlreadySearched(String movieTitle) {

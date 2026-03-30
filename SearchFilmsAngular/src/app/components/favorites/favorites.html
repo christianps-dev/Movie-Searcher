@@ -1,1 +1,33 @@
-<p>favorites works!</p>
+<app-header></app-header>
+<main class="form-floating ">
+    <div class="container border border-2 rounded rounded-3 mainBox shadow-lg">
+        <div class="row my-4">
+            <form [formGroup]="FavoritesMovies" (submit)="getFavorites()" method="post" class="row align-items-center justify-content-center">
+
+              <div class="col text-center">
+                <span>
+                  <img class="imageFourtypx" src="../../../..//public/icons/iconTitleMovie.png" alt="">
+                  <label>
+                      <input formControlName="genre" type="text" placeholder="Enter a movie genre"  class="searchBarCarac btn btn-outline-light shadow-lg"/>
+                  </label>
+                  <button class="btn btn-outline-light searchBarCarac shadow-lg" type="submit">Search</button>
+                  <a class="btn btn-outline-ligh searchBarCarac shadow-lg" (click)="sendHomePage()"> Home</a>
+                </span>
+              </div>
+
+            </form>
+        </div>
+        <div class="row g-4">
+          @for ( movie of favoritesMovies; track movie.filmTitle){
+            <div class="col-4">
+                <div class="movieFavoritesDiv shadow-lg">
+                    <img src="{{movie.posterURL}}" class="movieFavoritesImage shadow-lg" alt="">
+                    <div class="movieFavoritesTitle shadow-lg">{{movie.filmTitle}}</div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</main>
+
+<app-footer></app-footer>

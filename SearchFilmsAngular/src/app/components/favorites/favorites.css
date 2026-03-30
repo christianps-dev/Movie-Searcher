@@ -1,0 +1,49 @@
+
+.mainBox{
+  background-color: #E5EAF5;
+  border: 1px solid #420E5B;
+  padding-bottom: 1%;
+}
+
+
+.imageFourtypx{
+  opacity: 0.5;
+  width: 40px;
+  height: 40px;
+}
+
+.searchBarCarac{
+  background-color: #FFFFFF;
+  color: #6610F2;
+  font-weight: bolder;
+  margin-left: 20px;
+  border-color: #6610F2;
+  text-transform: capitalize;
+}
+
+.movieFavoritesDiv{
+  margin: 5% 2% 2% 2%;
+  border-radius: 20px;
+  border: 1px solid #6610F2
+}
+
+.movieFavoritesImage{
+  width: 220px;
+  height: 300px;
+  text-align: center;
+  border-radius: 20px;
+  background-color: #E5EAF5;
+  margin: 5% 5% 1% 18%;
+  border: 2px solid #FFFFFF;
+}
+
+.movieFavoritesTitle{
+  opacity: 0.5;
+  font-size: 22px;
+  width: 220px;
+  text-align: center;
+  border-radius: 20px;
+  background-color: #E5EAF5;
+  border: 2px solid #FFFFFF;
+  margin: 1% 5% 5% 18%;
+}

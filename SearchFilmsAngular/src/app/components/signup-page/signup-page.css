@@ -1,4 +1,4 @@
-.login-container {
+.signup-container {
   background: #494D5F;
   background-image: url("../../../..//public/images/background.jpg");
   background-size: cover;
@@ -6,9 +6,8 @@
   min-height: 100vh;
 }
 
-.login-card {
+.signup-card {
   max-width: 1000px;
-  min-height: 600px;
   background-color: white;
 }
 
@@ -22,7 +21,6 @@
   align-items: center;
   text-align: center;
   color: #adb5bd;
-  font-size: 0.9rem;
 }
 
 .divider::before,

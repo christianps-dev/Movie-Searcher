@@ -1,13 +1,14 @@
 import { MovieDTO } from './../../dto/moviedto';
 import { Component } from '@angular/core';
-import { NgOptimizedImage } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MovieSearch } from '../../services/movie-searcher';
+import { Footer } from "../footer/footer";
+import { Header } from "../header/header";
 
 @Component({
   selector: 'app-home',
-  imports: [NgOptimizedImage, ReactiveFormsModule],
+  imports: [ReactiveFormsModule, Footer, Header],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
@@ -29,12 +30,9 @@ export class Home {
   searchMovie(){
     const movieTitle = this.MovieForm.value.title;
     this.getMovie.getMovie(movieTitle).subscribe({
-      next: (nxt) => {this.movie = nxt as MovieDTO,
-        console.log(nxt.genre)
-      },
+      next: (nxt) => this.movie = nxt as MovieDTO,
       error: (err) => console.log("Error in movie query", err)
     })
-    console.log(this.movie?.country)
     return;
   }
 }

@@ -1,7 +1,7 @@
+import { LoginUserDTO } from './../../dto/login-userdto';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginUserDTO } from '../../dto/login-userdto';
 import { AuthUser } from '../../services/auth-user/auth-user';
 
 @Component({
@@ -19,13 +19,16 @@ export class LoginPage {
 
   constructor(private router: Router, private authUser: AuthUser){}
 
+  userToken = sessionStorage.getItem('token');
+
   siginUser(){
+    this.userToken = sessionStorage.getItem('token');
     const userLogin = this.LoginForm.value as LoginUserDTO;
     this.authUser.siginUser(userLogin);
   }
 
   sendSignupPage(){
-    return this.router.navigate(["/register"])
+    return this.router.navigate(["/signup"])
   }
 
 }

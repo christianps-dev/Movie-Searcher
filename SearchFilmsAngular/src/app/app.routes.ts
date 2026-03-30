@@ -3,6 +3,7 @@ import { Home } from './components/home/home';
 import { Favorites } from './components/favorites/favorites';
 import { LoginPage } from './components/login-page/login-page';
 import { RouteGuard } from './security/auth-guard';
+import { SignupPage } from './components/signup-page/signup-page';
 
 export const routes: Routes = [
   {
@@ -17,6 +18,14 @@ export const routes: Routes = [
   },
   {
     path: "login",
+    component: LoginPage
+  },
+  {
+    path: "signup",
+    component: SignupPage
+  },
+  {
+    path: "",
     component: LoginPage
   }
 ];

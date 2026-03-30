@@ -1,11 +1,22 @@
-.footerSite{
-  font-weight: bolder;
-  text-align: center;
-  font-size: 16px;
-  padding-top: 0.5%;
+:host {
+  display: flex;
+  flex-direction: column;
 }
 
-.colorFontOpacity{
+.border-top {
+  border-top: 1px solid #dee2e6 !important;
+}
+
+.footer-text, .footer-attribution {
   color: #000000;
-  opacity: 0.5;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.footer-attribution:hover {
+  opacity: 1;
+}
+
+footer {
+  background-color: #E5EAF5;
 }

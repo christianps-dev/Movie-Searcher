@@ -1,10 +1,13 @@
+
+<app-header></app-header>
+
 <main class="form-floating">
     <div class="container border border-2 rounded rounded-3 mainBox shadow-lg">
         <div class="row">
 
-            <form [formGroup]="MovieForm" (submit)="searchMovie()" method="post" class="row align-items-center justify-content-center">
+            <form [formGroup]="MovieForm" (submit)="searchMovie()" method="post" class="row align-items-center justify-content-center my-3">
               <div class="col text-center">
-                  <img class="imageFourtypx" src="/icons/title_movie_search.png" alt="">
+                  <img class="imageFourtypx" src="../../../..//public/icons/iconTitleMovie.png" alt="">
                   <label>
                       <input formControlName="title" id="title" name="title" type="text" placeholder="Enter a movie title" class="searchBarCarac btn btn-outline-light shadow-lg"/>
                   </label>
@@ -15,37 +18,37 @@
 
             <div class="row">
                 <div class="col">
-                    <p class="boxTitleMovie colorFontOpacity text-center">Movie Info</p>
-                    <ul class="border border-2 rounded text-start shadow-lg h5 movieInfo">
+                    <p class="boxTitleMovie opacity-75 text-center">Movie Info</p>
+                    <ul class="border border-2 rounded text-start shadow-lg h5 movieInfo opacity-75">
                         <li>
-                            <img class="imageMovieInfo" src="/icons/icon_title.png" alt=""/>
+                            <img class="imageMovieInfo" src="../../../..//public/icons/iconTitleMovie.png" alt=""/>
                             Title: {{movie?.Title}}
                         </li>
                         <li>
-                            <img class="imageMovieInfo" th:src="/icons/icon_date.png" alt=""/>
+                            <img class="imageMovieInfo" src="../../../..//public/icons/iconDate.png" alt=""/>
                             Year: {{movie?.Year}}
                         </li>
                         <li>
-                            <img class="imageMovieInfo" th:src="/icons/theater_302260.png" alt=""/>
+                            <img class="imageMovieInfo" src="../../../..//public/icons/iconTheater.png" alt=""/>
                             Genres: {{movie?.Genre}}
                         </li>
                         <li>
-                            <img class="imageMovieInfo" th:src="/icons/icon_tv.png" alt=""/>
+                            <img class="imageMovieInfo" src="../../../..//public/icons/iconTv.png" alt=""/>
                             Type: {{movie?.Type}}
                         </li>
                         <li>
-                            <img class="imageMovieInfo" th:src="/icons/icon_map.png" alt=""/>
+                            <img class="imageMovieInfo" src="../../../..//public/icons/iconMap.png" alt=""/>
                             Country: {{movie?.Country}}
                         </li>
                         <li>
-                            <img class="imageMovieInfo" th:src="/icons/icon_star.png" alt=""/>
-                            Rating: {{movie?.Rating}}
+                            <img class="imageMovieInfo" src="../../../..//public/icons/iconStart.png" alt=""/>
+                            Rating: <span class="opacity-50">{{movie?.Rating}}</span>
                         </li>
                     </ul>
                 </div>
 
                 <div class="col">
-                    <p class="boxTitleMovie colorFontOpacity">Movie / Series</p>
+                    <p class="boxTitleMovie opacity-75">Movie / Series</p>
 
                     <div class="movieInfo row">
 
@@ -53,8 +56,8 @@
                             <img class="movieImagePoster" src="{{movie?.Poster}}" alt="">
                         </div>
                         <div class="col moviePlot shadow-lg">
-                            <p class="h4 colorFontOpacity boxTitleMovie underline">Plot</p>
-                            <span class="h6 colorFontOpacity">{{movie?.Plot}}</span>
+                            <p class="h4 opacity-50 boxTitleMovie">Plot</p>
+                            <span class="h6 opacity-50">{{movie?.Plot}}</span>
                         </div>
                     </div>
                 </div>
@@ -62,3 +65,5 @@
         </div>
     </div>
 </main>
+
+<app-footer></app-footer>

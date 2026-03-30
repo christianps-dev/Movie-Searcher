@@ -1,4 +1,5 @@
 export interface UserResponseDTO{
   username: string,
-  token: string;
+  token: string,
+  email: string;
 }
