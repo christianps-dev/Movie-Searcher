@@ -1,28 +1,33 @@
 ## 🎬 Movie Catalog Searcher
 
-A comprehensive Spring Boot 3 application for real-time movie discovery and personalized collections. It integrates with the **OMDB API** for metadata and features a secure, **JWT-based** authentication system.
+A Spring Boot 3 & Angular application for real-time movie discovery and personalized collections. It integrates with the OMDB API for metadata and features a robust, Auth0-powered identity management system.
 
 ---
 
 ### 🚀 Features
 
 * **Real-time Discovery**: Fetches titles, genres, and posters directly via OMDB API integration.
-* **User Management**: Secure registration, login, and session handling using **JWT**.
+* **Modern Auth (OAuth0)**: Secure registration and login using Auth0 (OIDC/OAuth 2.0) for centralized identity management.
+* **Session Persistence**: Utilizes Session Storage in the browser to maintain the user's active state and access tokens without constant re-authentication.
 * **Personalized Favorites**: Users can persist their favorite movies to a private catalog.
-* **Responsive UI**: A modern, dark-themed catalog built with **Bootstrap 5** and **Thymeleaf**.
+* **Single Page Application (SPA)**: A fast, responsive, and dark-themed UI built with **Angular** and **Bootstrap 5**.
 * **Containerized**: "One-command" deployment using Docker and Docker Compose.
 
 ---
 
 ### 🏗️ Architecture
 
-The project implements a robust **MVC (Model-View-Controller)** pattern with a clear separation of concerns:
+The project follows a Decoupled Client-Server pattern with a clear separation of concerns:
 
-* **Controller**: Handles routing for movies and authentication (e.g., `LoginController`, `MovieController`).
-* **Services**: Encapsulates business logic, API calls, and security processing.
-* **Repository**: Manages data persistence through Spring Data JPA interfaces.
-* **Entity**: Defines the database schema for Users, Movies, and Favorites.
-* **Security**: Custom JWT implementation for stateless authentication.
+* **Frontend (Angular)**: A standalone SPA that handles routing, UI state, and Auth0 integration. It manages user credentials via the Auth0 SDK and stores tokens in Session Storage.
+
+* **Backend (Spring Boot)**: Acts as a Resource Server. It validates JWT tokens issued by Auth0 to secure REST API endpoints.
+
+* **Service Layer**: Encapsulates business logic, including OMDB API communication and favorites management.
+
+* **Repository**: Manages data persistence through Spring Data JPA.
+
+* **Security**: Configured with Spring Security's OAuth2 resource server support to interact with Auth0.
 
 ---
 
@@ -30,8 +35,8 @@ The project implements a robust **MVC (Model-View-Controller)** pattern with a c
 
 | Layer | Technology |
 | --- | --- |
-| **Backend** | Java 17, Spring Boot 3.x, Spring Security (JWT) |
-| **Frontend** | Thymeleaf, Bootstrap 5, CSS3 |
+| **Backend** | Java 17, Spring Boot 3.x, Spring Security (OAuth2/ Auth0) |
+| **Frontend** | Angular, SessionStorage, Bootstrap 5, CSS3 |
 | **Database** | PostgreSQL |
 | **DevOps** | Docker, Docker Compose |
 
@@ -94,12 +99,6 @@ volumes:
 ```
 
 ---
-
-### 🔑 Authentication Flow (JWT)
-
-1. **Sign Up/Login**: User submits credentials via the `userauth` templates.
-2. **Token Issuance**: Upon validation, the server generates a signed JWT.
-3. **Authorized Access**: The token is sent in headers for subsequent requests to access protected routes like `/favorites`.
 
 **To run the project:**
 
