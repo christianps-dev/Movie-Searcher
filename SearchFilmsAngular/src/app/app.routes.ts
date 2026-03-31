@@ -1,4 +1,4 @@
-import { Routes, CanActivateFn } from '@angular/router';
+import { Routes, CanActivateFn, Router } from '@angular/router';
 import { Home } from './components/home/home';
 import { Favorites } from './components/favorites/favorites';
 import { LoginPage } from './components/login-page/login-page';
@@ -25,7 +25,7 @@ export const routes: Routes = [
     component: SignupPage
   },
   {
-    path: "",
+    path: "**",
     component: LoginPage
   }
 ];

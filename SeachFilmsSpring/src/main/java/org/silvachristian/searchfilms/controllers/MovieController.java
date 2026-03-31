@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/home")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "${frontend_angular_url}")
 public class MovieController {
 
     private final MovieServices movieServices;

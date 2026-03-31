@@ -20,8 +20,8 @@ public class MovieServices {
     private final FavoritesRepository favoritesRepository;
 
     MovieServices(RestClient.Builder builder, MovieRepository movieRepository,
-                  FavoritesRepository favoritesRepository, @Value("${omdb-api-key}") String apiKey,
-                   @Value("${omdb-api-url}") String omdbAPIUrl) {
+                  FavoritesRepository favoritesRepository, @Value("${omdb_api_key}") String apiKey,
+                  @Value("${omdb_api_url}") String omdbAPIUrl) {
         this.restClient = builder.baseUrl(omdbAPIUrl).build();
         this.movieRepository = movieRepository;
         this.favoritesRepository = favoritesRepository;
@@ -82,7 +82,7 @@ public class MovieServices {
             return favoritesRepository.findAllFavorites(userId);
         }
 
-        return favoritesRepository.findByGenre(stringToCapital(movieGenre));
+        return favoritesRepository.findByGenre(stringToCapital(movieGenre), userId);
 
     }
 }

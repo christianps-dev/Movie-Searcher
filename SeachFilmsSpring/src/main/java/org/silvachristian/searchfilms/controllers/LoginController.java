@@ -17,7 +17,7 @@ import java.util.Objects;
 
 @RestController()
 @RequestMapping("/auth")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "${frontend_angular_url}")
 public class LoginController {
 
     LoginServices loginServices;

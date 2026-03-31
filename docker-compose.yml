@@ -11,18 +11,27 @@ services:
     volumes:
       - .SearchFilmsSpring/src/main/resources/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
       - postgres_data:/var/lib/postgresql/data
+      
+  angular:
+     build: SearchFilmsAngular
+     container_name: angular_app_sf
+     ports:
+       - "4200:80"
+     depends_on:
+       - spring
 
-  app:
-    build: SearchFilmsSpring
-    container_name: spring_app
+  spring:
+    build: SeachFilmsSpring
+    container_name: spring_app_sf
     ports:
       - "8080:8080"
     environment:
       - SPRING_DATASOURCE_URL=${SPRING_DATASOURCE_URL}
       - SPRING_DATASOURCE_USERNAME=${DATABASE_POSTGRES_USER}
       - SPRING_DATASOURCE_PASSWORD=${DATABASE_POSTGRES_PASSWORD}
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-      - OMDB-API-KEY=${SPRING_API_KEY_OMDB}
+      - SPRING_API_KEY_OMDB=${SPRING_API_KEY_OMDB}
+      - OMDB_API_URL=${OMDB_API_URL}
+      - FRONTEND_ANGULAR_URL=${FRONTEND_ANGULAR_URL}
     depends_on:
       - db
 
