@@ -126,6 +126,8 @@ volumes:
 
 ```
 
+#### 2. Enviroment Variables
+
 ```.env
 ### Database ###
 
